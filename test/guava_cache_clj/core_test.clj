@@ -26,6 +26,14 @@
 
     (is (= {} (cache->map cache)))))
 
+(deftest weight-test
+  (let [cache (build identity {:maximum-weight 50
+                               :weight-fn      (fn [x _] x)})]
+    (is (= 1 (cache 1)))
+    (is (= 2 (cache 2)))
+    (is (= 50 (cache 50)))
+    (is (= {1 1, 2 2} (into {} (cache->map cache))))))
+
 (deftest build-options
   (build identity {:concurrency-level 20})
   (build identity {:expire-after-access (t/minutes 5)})

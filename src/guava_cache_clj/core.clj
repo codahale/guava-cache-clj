@@ -80,7 +80,7 @@
        (.weakValues b))
      (when weight-fn
        (.weigher b (proxy [Weigher] []
-                     (weight [k v]
+                     (weigh [k v]
                        (weight-fn k v)))))
      (cache-proxy (.build b (proxy [CacheLoader] []
                               (load [k] (loader-fn k))))))))
