@@ -112,3 +112,7 @@
      :miss-rate            (.missRate s)
      :request-count        (.requestCount s)
      :total-load-time      (.totalLoadTime s)}))
+
+(defn cleanup!
+  [^Supplier cache]
+  (.cleanUp ^LoadingCache (.get cache)))

@@ -31,6 +31,11 @@
     (invalidate-all! cache)
     (is (= {} (into {} (cache->map cache))))))
 
+(deftest cleanup!-test
+  (let [cache (build identity)]
+    ;; impossible to test, unfortunately
+    (cleanup! cache)))
+
 (deftest disabled-caching
   (let [cache (build identity {:disabled? true})]
     (is (= 1 (cache 1)))
