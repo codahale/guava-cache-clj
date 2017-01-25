@@ -1,4 +1,4 @@
-(defproject com.codahale/guava-cache-clj "0.1.1-SNAPSHOT"
+(defproject com.codahale/guava-cache-clj "0.1.1"
   :description "A Clojure wrapper for Guava's caches."
   :url "https://github.com/codahale/guava-cache-clj"
   :license {:name "Eclipse Public License"
