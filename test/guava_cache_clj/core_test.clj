@@ -26,6 +26,14 @@
 
     (is (= {} (cache->map cache)))))
 
+(deftest removal-listener-test
+  (let [n (atom [])
+        cache (build identity {:removal-listener-fn #(swap! n conj %)
+                               :maximum-size 1})]
+    (is (= 1 (cache 1)))
+    (is (= 2 (cache 2)))
+    (is (= [{:key 1, :value 1, :evicted? true, :reason :size}] @n))))
+
 (deftest weight-test
   (let [cache (build identity {:maximum-weight 50
                                :weight-fn      (fn [x _] x)})]
