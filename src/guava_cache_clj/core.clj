@@ -96,3 +96,19 @@
 (defn invalidate-all!
   [^Supplier cache]
   (.invalidateAll ^LoadingCache (.get cache)))
+
+(defn stats
+  [^Supplier cache]
+  (let [s (.stats ^LoadingCache (.get cache))]
+    {:average-load-penalty (.averageLoadPenalty s)
+     :eviction-count       (.evictionCount s)
+     :hit-count            (.hitCount s)
+     :hit-rate             (.hitRate s)
+     :load-couunt          (.loadCount s)
+     :load-exception-count (.loadExceptionCount s)
+     :load-exception-rate  (.loadExceptionRate s)
+     :load-success-count   (.loadSuccessCount s)
+     :miss-count           (.missCount s)
+     :miss-rate            (.missRate s)
+     :request-count        (.requestCount s)
+     :total-load-time      (.totalLoadTime s)}))

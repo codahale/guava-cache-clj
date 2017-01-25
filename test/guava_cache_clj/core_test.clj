@@ -54,6 +54,22 @@
     (is (= 50 (cache 50)))
     (is (= {1 1, 2 2} (into {} (cache->map cache))))))
 
+(deftest stats-test
+  (let [cache (build identity {:record-stats? true})]
+    (is (= {:eviction-count       0
+            :load-success-count   0
+            :miss-count           0
+            :load-couunt          0
+            :average-load-penalty 0.0
+            :miss-rate            0.0
+            :total-load-time      0
+            :hit-rate             1.0
+            :hit-count            0
+            :load-exception-rate  0.0
+            :request-count        0
+            :load-exception-count 0}
+           (stats cache)))))
+
 (deftest build-options
   (build identity {:concurrency-level 20})
   (build identity {:expire-after-access (t/minutes 5)})
