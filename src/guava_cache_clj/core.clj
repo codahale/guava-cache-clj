@@ -88,3 +88,11 @@
 (defn cache->map
   [^Supplier cache]
   (.asMap ^LoadingCache (.get cache)))
+
+(defn invalidate!
+  [^Supplier cache k]
+  (.invalidate ^LoadingCache (.get cache) k))
+
+(defn invalidate-all!
+  [^Supplier cache]
+  (.invalidateAll ^LoadingCache (.get cache)))

@@ -22,6 +22,15 @@
     (is (= [1] (vec (keys (cache->map cache)))))
     (is (= {1 1} (into {} (cache->map cache))))))
 
+(deftest invalidation-test
+  (let [cache (build identity)]
+    (is (= 1 (cache 1)))
+    (is (= 2 (get cache 2)))
+    (invalidate! cache 1)
+    (is (= {2 2} (into {} (cache->map cache))))
+    (invalidate-all! cache)
+    (is (= {} (into {} (cache->map cache))))))
+
 (deftest disabled-caching
   (let [cache (build identity {:disabled? true})]
     (is (= 1 (cache 1)))
