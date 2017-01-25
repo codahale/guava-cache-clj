@@ -14,8 +14,11 @@
     (is (= 300 (get cache 2 300)))
 
     ;; Counted
-    (is (= 1 (count cache)))
+    (is (= 1 (count cache)))))
 
+(deftest cache->map-test
+  (let [cache (build identity)]
+    (is (= 1 (cache 1)))
     (is (= [1] (vec (keys (cache->map cache)))))
     (is (= {1 1} (into {} (cache->map cache))))))
 
