@@ -64,7 +64,7 @@
     (is (= {:eviction-count       0
             :load-success-count   0
             :miss-count           0
-            :load-couunt          0
+            :load-count           0
             :average-load-penalty 0.0
             :miss-rate            0.0
             :total-load-time      0
