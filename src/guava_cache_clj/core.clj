@@ -104,7 +104,7 @@
      :eviction-count       (.evictionCount s)
      :hit-count            (.hitCount s)
      :hit-rate             (.hitRate s)
-     :load-couunt          (.loadCount s)
+     :load-count           (.loadCount s)
      :load-exception-count (.loadExceptionCount s)
      :load-exception-rate  (.loadExceptionRate s)
      :load-success-count   (.loadSuccessCount s)
